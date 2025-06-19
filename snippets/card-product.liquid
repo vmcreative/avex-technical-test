@@ -32,6 +32,17 @@
       assign ratio = 1
     endif
   -%}
+  {%- liquid
+    assign show_image_badge = false
+    assign show_price_badge = false
+    if settings.show_product_label_on_card
+      if settings.card_label_position == 'price'
+        assign show_price_badge = true
+      elsif settings.card_label_position == 'image'
+        assign show_image_badge = true
+      endif
+    endif 
+  -%}
   <div class="card-wrapper product-card-wrapper underline-links-hover">
     <div
       class="
@@ -116,22 +127,13 @@
               </a>
             </h3>
           </div>
+          {%- comment -%}
+            Replace exsiting badging with new product-label snippet
+          {%- endcomment -%}
           <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.available == false -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-              >
-                {{- 'products.product.sold_out' | t -}}
-              </span>
-            {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
-            {%- endif -%}
+            {% if show_image_badge %}
+              {% render 'product-label', variant: card_product.selected_or_first_available_variant %}
+            {%endif %}
           </div>
         </div>
       </div>
@@ -196,7 +198,10 @@
               </p>
             {%- endif -%}
 
-            {% render 'price', product: card_product, price_class: '' %}
+            {% render 'price',
+              product: card_product,
+              price_class: '',
+              show_badges: show_price_badge %}
           </div>
         </div>
         {%- if show_quick_add -%}
@@ -313,22 +318,13 @@
             {%- endif -%}
           </div>
         {%- endif -%}
+        {%- comment -%}
+          Replace exsiting badging with new product-label snippet
+        {%- endcomment -%}
         <div class="card__badge {{ settings.badge_position }}">
-          {%- if card_product.available == false -%}
-            <span
-              id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
-            >
-              {{- 'products.product.sold_out' | t -}}
-            </span>
-          {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
-            <span
-              id="Badge-{{ section_id }}-{{ card_product.id }}"
-              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-            >
-              {{- 'products.product.on_sale' | t -}}
-            </span>
-          {%- endif -%}
+          {% if show_image_badge %}
+            {% render 'product-label', variant: card_product.selected_or_first_available_variant %}
+          {%endif %}
         </div>
       </div>
     </div>
@@ -373,7 +369,9 @@
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ 'products.product.vendor' | t }}</div>
             {%- endif -%}
-            {% render 'price' %}
+            {% render 'price',
+              product: card_product,
+              show_badges: show_price_badge %}
           </div>
         </div>
       </div>

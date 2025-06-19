@@ -383,6 +383,151 @@
     ]
   },
   {
+    "name": "t:settings_schema.product_label.name",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.product_label.paragraph"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.product_label.header_1"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_label_on_card",
+        "label": "t:settings_schema.product_label.settings.show_product_label_on_card.label",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "card_label_position",
+        "label": "t:settings_schema.product_label.settings.card_label_position.label",
+        "default": "image",
+        "options": [
+          {
+            "value": "price",
+            "label": "t:settings_schema.product_label.settings.card_label_position.options.price"
+          },
+          {
+            "value": "image",
+            "label": "t:settings_schema.product_label.settings.card_label_position.options.image"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.product_label.settings.card_label_position.paragraph"
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.product_label.header_2"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_label_on_pdp",
+        "label": "t:settings_schema.product_label.settings.show_product_label_on_pdp.label",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_label_position",
+        "label": "t:settings_schema.product_label.settings.pdp_label_position.label",
+        "default": "price",
+        "options": [
+          {
+            "value": "price",
+            "label": "t:settings_schema.product_label.settings.pdp_label_position.options.price"
+          },
+          {
+            "value": "block",
+            "label": "t:settings_schema.product_label.settings.pdp_label_position.options.block"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.product_label.header_3"
+      },
+      {
+        "type": "range",
+        "id": "product_label_low_stock_threshold",
+        "label": "t:settings_schema.product_label.settings.product_label_low_stock_threshold.label",
+        "min": 1,
+        "max": 100,
+        "step": 1,
+        "default": 25
+      },
+      {
+        "type": "header",
+        "content": "t:settings_schema.product_label.header_4"
+      },
+      {
+        "type": "color",
+        "id": "product_label_default_text_color",
+        "label": "t:settings_schema.product_label.settings.product_label_default_text_color.label",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "product_label_default_bg_color",
+        "label": "t:settings_schema.product_label.settings.product_label_default_bg_color.label",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "product_label_border_radius",
+        "label": "t:settings_schema.product_label.settings.product_label_border_radius.label",
+        "unit": "rem",
+        "min": 0,
+        "max": 8,
+        "step": 0.2,
+        "default": 0.6
+      },
+      {
+        "type": "range",
+        "id": "product_label_padding",
+        "label": "t:settings_schema.product_label.settings.product_label_padding.label",
+        "unit": "rem",
+        "min": 0.2,
+        "max": 2,
+        "step": 0.2,
+        "default": 0.6
+      },
+      {
+        "type": "range",
+        "id": "product_label_font_size",
+        "label": "t:settings_schema.product_label.settings.product_label_font_size.label",
+        "unit": "rem",
+        "min": 0.8,
+        "max": 2,
+        "step": 0.2,
+        "default": 1
+      },
+      {
+        "type": "select",
+        "id": "product_label_font_weight",
+        "label": "t:settings_schema.product_label.settings.product_label_font_weight.label",
+        "default": "400",
+        "options": [
+          { "value": "400", "label": "Normal" },
+          { "value": "600", "label": "Semi-bold" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "product_label_text_transform",
+        "label": "t:settings_schema.product_label.settings.product_label_text_transform.label",
+        "default": "uppercase",
+        "options": [
+          { "value": "uppercase", "label": "Uppercase" },
+          { "value": "capitalize", "label": "Capitalize" },
+          { "value": "none", "label": "None" }
+        ]
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.inputs.name",
     "settings": [
       {

@@ -88,12 +88,23 @@
                   </h2>
                 </a>
               </div>
+            {%- comment -%}
+              Custom product-label block (can be moved in theme settings)
+            {%- endcomment -%}
+            {%- when 'custom_label' -%}
+              {% if settings.show_product_label_on_pdp and settings.product_label_position == 'block' %}
+                {% render 'product-label', variant: product.selected_or_first_available_variant %}
+              {% endif %}
             {%- when 'price' -%}
+              {% assign show_price_badge = false %}
+              {% if settings.show_product_label_on_pdp and settings.product_label_position == 'price' %}
+                {% assign show_price_badge = true %}
+              {% endif %}
               <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                 {%- render 'price',
                   product: product,
                   use_variant: true,
-                  show_badges: true,
+                  show_badges: show_price_badge,
                   price_class: 'price--large'
                 -%}
               </div>
@@ -622,6 +633,11 @@
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
+    },
+    {
+    "type": "custom_label",
+    "name": "t:sections.main-product.blocks.custom_label.name",
+    "limit": 1
     },
     {
       "type": "sku",
@@ -2075,6 +2091,17 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.main-product.presets.default.name",
+      "blocks": [
+        { "type": "title" },
+        { "type": "price" },
+        { "type": "custom_label" },
+        { "type": "text" }
+      ]
     }
   ]
 }

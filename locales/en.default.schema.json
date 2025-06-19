@@ -236,6 +236,61 @@
       "name": "Variant pills",
       "paragraph": "Variant pills are one way of displaying your product variants. [Learn more](https:\/\/help.shopify.com\/en\/manual\/online-store\/themes\/theme-structure\/page-types#variant-picker-block)"
     },
+    "product_label": {
+      "name": "Product labels",
+      "paragraph": "Product label content, color, and priority can be set individually in each product variant's metafield settings. 'Sold Out' labels supercede other labels.",
+      "header_1": "Product Card",
+      "header_2": "Product Detail Page",
+      "header_3": "Low Stock",
+      "header_4": "Label Styling",
+      "settings": {
+        "show_product_label_on_card": {
+          "label": "Show label on product cards"
+        },
+        "card_label_position": {
+          "label": "Card label position",
+          "paragraph": "Image badge placement is set under 'Badges'.",
+          "options": {
+            "price": "Price badge",
+            "image": "Image badge"
+          }
+        },
+        "show_product_label_on_pdp": {
+          "label": "Show label on product detail page"
+        },
+        "pdp_label_position": {
+          "label": "PDP label position",
+          "options": {
+            "price": "Price badge",
+            "block": "Section block"
+          }
+        },
+        "product_label_low_stock_threshold": {
+          "label": "Low stock threshold"
+        },
+        "product_label_default_text_color": {
+          "label": "Default label text color"
+        },
+        "product_label_default_bg_color": {
+          "label": "Default label background color"
+        },
+        "product_label_border_radius": {
+          "label": "Label border radius"
+        },
+        "product_label_padding": {
+          "label": "Label padding"
+        },
+        "product_label_font_size": {
+          "label": "Label font size"
+        },
+        "product_label_font_weight": {
+          "label": "Label font weight"
+        },
+        "product_label_text_transform": {
+          "label": "Text transform"
+        }
+      }
+    },
     "inputs": {
       "name": "Inputs"
     },
@@ -1921,6 +1976,9 @@
         "price": {
           "name": "Price"
         },
+        "custom_label": {
+          "name": "Custom Product Label"
+        },
         "inventory": {
           "name": "Inventory status",
           "settings": {
@@ -2371,6 +2429,11 @@
         },
         "enable_video_looping": {
           "label": "Enable video looping"
+        }
+      },
+      "presets": {
+        "default": {
+          "name": "Default product"
         }
       }
     },

@@ -83,13 +83,10 @@
       </span>
     </small>
   </div>
+  {%- comment -%}
+    Replace exsiting badging with new product-label snippet
+  {%- endcomment -%}
   {%- if show_badges -%}
-    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
-      {{ 'products.product.on_sale' | t }}
-    </span>
-
-    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
-      {{ 'products.product.sold_out' | t }}
-    </span>
+    {% render 'product-label', variant: product.selected_or_first_available_variant %}
   {%- endif -%}
 </div>
