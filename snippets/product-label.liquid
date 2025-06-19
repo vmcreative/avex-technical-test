@@ -1,0 +1,51 @@
+{% liquid
+  # === Get custom metafields ===
+  assign label_text = variant.metafields.custom_labels.label | strip
+  assign text_color = variant.metafields.custom_labels.text_color | default: '#ffffff'
+  assign bg_color = variant.metafields.custom_labels.bg_color | default: '#000000'
+
+  # === Get and normalize the label priority ===
+  assign raw_priority = variant.metafields.custom_labels.card_label_priority
+  assign label_priority = raw_priority | replace: ' ', '_' | downcase | default: ''
+
+  # === Initialize flags and result ===
+  assign is_on_sale = false
+  assign is_low_stock = false
+  assign final_label_text = ''
+
+  # === Check if variant qualifies as sale or low stock ===
+  if variant.compare_at_price > variant.price
+    assign is_on_sale = true
+  endif
+
+  if variant.inventory_management != null and variant.inventory_quantity < 10
+    assign is_low_stock = true
+  endif
+
+  # === Priority logic for label resolution ===
+  if label_priority == 'sale' and is_on_sale
+    assign final_label_text = 'Sale'
+  elsif label_priority == 'low_stock' and is_low_stock
+    assign final_label_text = 'Low Stock'
+  elsif label_priority == 'custom' and label_text != blank
+    assign final_label_text = label_text
+  elsif label_priority == ''
+    if label_text != blank
+      assign final_label_text = label_text
+    elsif is_on_sale
+      assign final_label_text = 'Sale'
+    elsif is_low_stock
+      assign final_label_text = 'Low Stock'
+    endif
+  endif
+%}
+
+{%- if final_label_text -%}
+  <div
+    class="custom-product-label"
+    style="background-color: {{ bg_color }}; color: {{ text_color }};"
+    data-label="{{ final_label_text | downcase }}"
+  >
+    {{ final_label_text }}
+  </div>
+{%- endif -%}
