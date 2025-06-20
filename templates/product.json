@@ -16,6 +16,10 @@
           "type": "title",
           "settings": {}
         },
+        "custom_label_LjbbRz": {
+          "type": "custom_label",
+          "settings": {}
+        },
         "vendor": {
           "type": "text",
           "settings": {
@@ -59,6 +63,7 @@
       },
       "block_order": [
         "title",
+        "custom_label_LjbbRz",
         "vendor",
         "variant_picker",
         "quantity_selector",
